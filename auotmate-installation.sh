@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#Automate the installation of Splunk with general user splunk and configure cronjob to start automatically when reboot, change to the slave license connecting to the master. 
 #/splunk hash-passwd Fedex123#
 
 #$6$GMjAMB8TnMv7DUk0$GJh6Hmk7wwQuhPHRWhme77j6.agkSg5.tfnl4m5bDLIggwiJnxOQdo/TgfwtW50DIHisqryeXPQ3H/ofpfuGQ/
@@ -13,6 +14,7 @@ SPLUNK_HOME="/opt/splunk/7.1.3/splunk"
 USER=db3700817
 PASSWD_FILE="user-seed.conf"
 CRON_FILE="mycron.txt"
+LICENSE_FILE="lic.txt"
 copy_install_file(){
 	for hosts in `cat hosts.txt`
 	do
@@ -20,6 +22,7 @@ copy_install_file(){
 		scp $INSTALL_FILE $USER@$hosts:
 		scp $PASSWD_FILE $USER@$hosts:
 		scp $CRON_FILE $USER@$hosts:
+		scp $LICENSE_FILE $USER@$hosts:
 	done
 }
 
@@ -43,12 +46,15 @@ fi
 sudo chown -R splunk.splunk /opt/splunk
 
 cd /opt/splunk
-ln -s 7.1.3/splunk current
+sudo -u splunk ln -s 7.1.3/splunk current
 cd  /opt/splunk/7.1.3/splunk/bin
 
 sudo -u splunk ./splunk start --accept-license --answer-yes --no-prompt  > /dev/null 2>&1
 
 sudo -u splunk cp /home/$USER/$PASSWD_FILE $SPLUNK_HOME/etc/system/local/user-seed.conf
+
+sudo -u splunk bash -c 'cat /home/$USER/$LICENSE_FILE  >> /opt/splunk/7.1.3/splunk/etc/system/local/server.conf'
+
 sudo -u splunk ./splunk restart
 sudo -u splunk crontab /home/$USER/$CRON_FILE
 "

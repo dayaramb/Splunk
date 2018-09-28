@@ -1,0 +1,2 @@
+[license]
+master_uri = https://splunk-license.prod.fedex.com:8089

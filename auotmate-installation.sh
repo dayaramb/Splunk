@@ -16,7 +16,7 @@ PASSWD_FILE="user-seed.conf"
 CRON_FILE="mycron.txt"
 LICENSE_FILE="lic.txt"
 copy_install_file(){
-	for hosts in `cat hosts.txt`
+	for hosts in `cat indexer.txt`
 	do
 		echo "copying the $INSTALL_FILE to $hosts"
 		scp $INSTALL_FILE $USER@$hosts:
@@ -28,6 +28,7 @@ copy_install_file(){
 
 
 REMOTE_SCRIPT=" 
+sudo rm -rf /opt/splunk
 sudo mkdir -p /opt/splunk/7.1.3
 
 sudo mv /home/$USER/$INSTALL_FILE /opt/splunk/7.1.3
@@ -55,14 +56,15 @@ sudo -u splunk cp /home/$USER/$PASSWD_FILE $SPLUNK_HOME/etc/system/local/user-se
 
 sudo -u splunk bash -c 'cat /home/$USER/$LICENSE_FILE  >> /opt/splunk/7.1.3/splunk/etc/system/local/server.conf'
 
-sudo -u splunk ./splunk restart
+sudo -u splunk ./splunk restart --accept-license --answer-yes --no-prompt  > /dev/null 2>&1
+
 sudo -u splunk crontab /home/$USER/$CRON_FILE
 "
 
 
 
 remote_execute(){
-	for hosts in `cat hosts.txt`
+	for hosts in `cat indexer.txt`
 	do
 		echo "Running the splunk installation in $hosts"
 		ssh -t $USER@$hosts "$REMOTE_SCRIPT"

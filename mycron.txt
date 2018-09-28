@@ -1,0 +1,3 @@
+PATH=$PATH:/opt/splunk/current/bin
+
+@reboot			ps -ef | grep 'splunk[d]' >/dev/null && exit 0 ; rm -f /var/splunk/run/splunk/splunkd.pid ; splunk start --answer-yes --no-prompt --accept-license

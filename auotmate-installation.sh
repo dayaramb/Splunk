@@ -12,12 +12,14 @@ INSTALL_FILE="splunk-7.1.3-51d9cac7b837-Linux-x86_64.tgz"
 SPLUNK_HOME="/opt/splunk/7.1.3/splunk"
 USER=db3700817
 PASSWD_FILE="user-seed.conf"
+CRON_FILE="mycron.txt"
 copy_install_file(){
 	for hosts in `cat hosts.txt`
 	do
 		echo "copying the $INSTALL_FILE to $hosts"
 		scp $INSTALL_FILE $USER@$hosts:
 		scp $PASSWD_FILE $USER@$hosts:
+		scp $CRON_FILE $USER@$hosts:
 	done
 }
 
@@ -48,6 +50,7 @@ sudo -u splunk ./splunk start --accept-license --answer-yes --no-prompt  > /dev/
 
 sudo -u splunk cp /home/$USER/$PASSWD_FILE $SPLUNK_HOME/etc/system/local/user-seed.conf
 sudo -u splunk ./splunk restart
+sudo -u splunk crontab /home/$USER/$CRON_FILE
 "
 
 

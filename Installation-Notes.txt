@@ -1,0 +1,3 @@
+All splunk components except a UF (a separate lightweight package) are based on an installation of Spunk Enterprise with specific options. 
+
+

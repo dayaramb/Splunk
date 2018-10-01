@@ -1,4 +1,7 @@
-c0011999.test.cloud.fedex.com
+c0010407.test.cloud.fedex.com   Cluster Master
+c0011331.test.cloud.fedex.com	SearchHead
+c0011906.test.cloud.fedex.com	SearchHead
+c0011999.test.cloud.fedex.com	Indexers
 c0012893.test.cloud.fedex.com
 c0012894.test.cloud.fedex.com
 c0012895.test.cloud.fedex.com

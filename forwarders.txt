@@ -1,4 +1,4 @@
-c0005557.test.cloud.fedex.com
+c0005557.test.cloud.fedex.com  SPLUNK 7.2
 c0004990.test.cloud.fedex.com
 c0004991.test.cloud.fedex.com
 c0004992.test.cloud.fedex.com

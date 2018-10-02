@@ -2,14 +2,14 @@ c0010407.test.cloud.fedex.com   Cluster Master
 c0011331.test.cloud.fedex.com	SearchHead
 c0011906.test.cloud.fedex.com	SearchHead
 c0011999.test.cloud.fedex.com	Indexers
-c0012893.test.cloud.fedex.com
-c0012894.test.cloud.fedex.com
-c0012895.test.cloud.fedex.com
-c0011038.test.cloud.fedex.com
-c0011036.test.cloud.fedex.com
-c0011042.test.cloud.fedex.com
-c0005825.test.cloud.fedex.com
-c0004847.test.cloud.fedex.com
-c0004509.test.cloud.fedex.com
-c0004510.test.cloud.fedex.com
-c0005556.test.cloud.fedex.com
+c0012893.test.cloud.fedex.com	Indexers	
+c0012894.test.cloud.fedex.com	Indexers
+c0012895.test.cloud.fedex.com	Indexers
+c0011038.test.cloud.fedex.com	Indexers
+c0011036.test.cloud.fedex.com	Indexers
+c0011042.test.cloud.fedex.com	SearchHead
+c0005825.test.cloud.fedex.com	SerchHead
+c0004847.test.cloud.fedex.com	Indexers
+c0004509.test.cloud.fedex.com	Deployment Server
+c0004510.test.cloud.fedex.com	UF
+c0005556.test.cloud.fedex.com	Deployer

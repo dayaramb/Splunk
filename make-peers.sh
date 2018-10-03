@@ -1,19 +1,15 @@
 #!/bin/bash
 USER=db3700817
-STR="
-[replication_port://9887]\n
+STR="[replication_port://9887]\n[clustering]\nmaster_uri = https://c0010407.test.cloud.fedex.com:8089\nmode = slave\npass4SymmKey = dayafedex\n"
+SPLUNK_HOME="/opt/splunk/current"
 
-[clustering]\n
-master_uri = https://c0010407.test.cloud.fedex.com:8089\n
-mode = slave\n
-pass4SymmKey = dayafedex\n
-"
 REMOTE_SCRIPT="
-sudo -u splunk sh -c  'echo -e $STR >> /tmp/server.conf'
+ echo -e '[replication_port://9887]\n[clustering]\nmaster_uri = https://c0010407.test.cloud.fedex.com:8089\nmode = slave\npass4SymmKey = dayafedex\n' |sudo -u splunk tee -a $SPLUNK_HOME/etc/system/local/server.conf
+sudo -u splunk /opt/splunk/current/bin/splunk restart
 "
-
 for host in `cat indexers`
 do
-	ssh -l -n $USER@$host $REMOTE_SCRIPT
+	ssh -t $USER@$host "$REMOTE_SCRIPT"
 done
 
+echo -e "$STR"

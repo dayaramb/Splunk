@@ -26,7 +26,9 @@ copy_install_file(){
 	done
 }
 
-
+REMOTE_REBOOTS="
+sudo /usr/sbin/reboot
+"
 REMOTE_SCRIPT=" 
 sudo rm -rf /opt/splunk
 sudo mkdir -p /opt/splunk/7.2.0
@@ -75,6 +77,18 @@ remote_execute(){
 
 
 
+remote_reboot(){
+        for hosts in `cat forwarders.txt`
+        do
+                echo "Rebooting hosts $hosts"
+                ssh -t $USER@$hosts "$REMOTE_REBOOTS"
+        done
+
+
+}
+
+
+remote_reboot
 copy_install_file
 remote_execute
 

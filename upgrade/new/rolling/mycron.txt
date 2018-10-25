@@ -1,0 +1,5 @@
+PATH=$PATH:/opt/splunk/current/bin
+
+* */2 * * *		/opt/splunk/current/etc/slave-apps/fedex_all_utils_nix_inputs/bin/autostart
+
+@reboot			ps -ef | grep 'splunk[d]' >/dev/null && exit 0 ; rm -f /var/splunk/run/splunk/splunkd.pid ; splunk start --answer-yes --no-prompt --accept-license

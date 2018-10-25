@@ -1,0 +1,17 @@
+splunk-search01.prod.fedex.com
+splunk-search02.prod.fedex.com
+splunk-search03.prod.fedex.com
+splunk-deployer01.prod.fedex.com
+splunk-master01.prod.fedex.com
+splunk-indexer01.prod.fedex.com
+splunk-indexer02.prod.fedex.com
+splunk-indexer03.prod.fedex.com
+splunk-indexer04.prod.fedex.com
+splunk-deployment.ute.fedex.com
+splunk-heavy01.prod.fedex.com
+splunk-heavy02.prod.fedex.com
+splunk-log01.prod.fedex.com
+splunk-log02.prod.fedex.com
+splunk-log03.prod.fedex.com
+splunk-log04.prod.fedex.com
+splunk-log05.prod.fedex.com
